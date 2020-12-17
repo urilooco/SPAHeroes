@@ -1,18 +1,22 @@
 <div class="fast fadeIn">
-  <h2 class="h2 display-4 pb-4">
-  Heroes <small> DC y Marvel</small>
+  <h2 class="h2 display-4 pb-4 text-center">
+  Heroes (activos) <small> DC y Marvel</small>
   </h2>
+  <hr>
   
   
   <div class="card-columns">
-      <div class="card fadeIn animated border" [ngClass]="{'border-primary' : Hero.casa == 'DC', 'border-danger' : Hero.casa == 'Marvel'}" *ngFor= "let Hero of ArrayHeros; let i = index">
-        <img src="{{Hero.img}}" class="card-img-top" alt="...">
+    <!-- <div class="card fadeIn animated border" [ngClass]="{'border-primary' : Hero.casa == 'DC', 'border-danger' : Hero.casa == 'Marvel'}" *ngFor= "let heroe of heroes; let i = index"> -->
+      <div class="card fadeIn animated border" [ngClass]="{'border-primary' : heroe.casa == 'DC', 'border-danger' : heroe.casa == 'Marvel'}" *ngFor= "let heroe of heroes; let i = index">
+        <div *ngIf="heroe.activo === true">
+        <img [src]="heroe.img | noImage" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{Hero.nombre}}</h5>
-          <p class="card-text">{{Hero.bio.substring(0,30)}}</p>
-          <small>{{Hero.aparicion}}</small>  
-      </div>
+          <h5 class="card-title">{{heroe.nombre}}</h5>
+          <p class="card-text">{{heroe.bio.substring(0,30)}}</p>
+          <small>{{heroe.aparicion}}</small>  
+        </div>
         <button (click)= "Navegar(i)" class="btn btn-outline-primary btn-block">Ver más...</button>
+      </div>
       </div>
   </div>
 </div>
